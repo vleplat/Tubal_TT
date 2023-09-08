@@ -30,7 +30,7 @@ zoomfactor      = 2;
 zoom_position   = 'll'; % position: 'lr' = "lower_right", 'll' = 'lower_left', 'ur' = 'uper_right', 'ul' = 'uper_left'
 I2=zoom_function(I1, upperleft_pixel, box, zoomfactor, zoom_position);
 imagesc(I2)
-title('Original Image','FontSize',30)
+title('Original Image','FontSize',3)
 
 axis image
 axis off
@@ -151,7 +151,7 @@ zoomfactor      = 2;
 zoom_position   = 'll'; % position: 'lr' = "lower_right", 'll' = 'lower_left', 'ur' = 'uper_right', 'ul' = 'uper_left'
 I2=zoom_function(I1, upperleft_pixel, box, zoomfactor, zoom_position);
 imagesc(I2)
-title('Proposed model','FontSize', 30)
+title('Proposed model','FontSize', 3)
 axis image
 axis off
 
@@ -197,7 +197,7 @@ zoomfactor      = 2;
 zoom_position   = 'll'; % position: 'lr' = "lower_right", 'll' = 'lower_left', 'ur' = 'uper_right', 'ul' = 'uper_left'
 I2=zoom_function(I1, upperleft_pixel, box, zoomfactor, zoom_position);
 imagesc(I2)
-title('TT-Based','FontSize', 30)
+title('TT-Based','FontSize', 3)
 axis image
 axis off
 %%
