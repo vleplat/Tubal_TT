@@ -1,3 +1,6 @@
+%% Add lib
+addpath(genpath(pwd))
+
 %% Tubal TT
 % AnhHuy Phan
 
@@ -117,8 +120,8 @@ opts.compression = false;
 relative_error = 0.08;
 opts.noise_level = relative_error^2*norm(Yt(:))^2;
 
-[Yt_dmrg,output] = tubtt_a2cu(Yt,[],opts);
-Yt_dmrgfull = full_tubtt(Yt_dmrg.U);
+[Yt_dmrg,output] = tubtt_a2cu(Yt,[],opts); %proposed
+Yt_dmrgfull = full_tubtt(Yt_dmrg.U);       
 
 %Visualize
 Yxm = ftensor2image(Yt_dmrgfull);
