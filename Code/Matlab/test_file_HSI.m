@@ -8,20 +8,46 @@ clear all;close all;clc
 % addpath('./Libraries/Tensor-tensor-product-toolbox-master/tproduct toolbox 1.0/')
 addpath(genpath(pwd))
 %% ------------------------------------------------------------------------
-% Data loading
+% Data loading and misc. init.
 %%-------------------------------------------------------------------------
+%%% Urban HSI data set
 load Urban.mat;
 mx = 307;
 my = 307;
+
+%%% Moffet data set
+% load Moffet.mat;
+% mx = 50;
+% my = 50;
+
+%%% Uncomment below for previous HSI
 [spec_bands,b] = size(X);
 Y = X;
 clear X;
 Y = reshape(Y',[mx my spec_bands]);
-Y = Y(30:30+249,30:30+249,:);
-RGB = RGB_visu(Y);
-bands = [1 12 26]; %Blue Green Red
+
+%%% Kennedy space center data set
+% load V.mat;
+% mx = 360;
+% my = 360;
+% Y = V;
+% clear V;
+
+
+%%% Pavia HSI data set
+% load PaviaU.mat;
+% Y = paviaU;
+% clear paviaU;
+
+
+Y = Y(30:30+249,30:30+249,:);        %urban relerror: 0.08 | 0.05 vs 0.08 
+% Y = Y(2:2+44,2:2+44,1:150);        %moffet relerror:     | 0.008 vs 0.02 
+% Y = Y(55:55+249,55:55+249,1:160);  %KSC: 0.05
+%Y = Y(1:600,:,1:100);               %PaviaU: 0.08         | 0.075 vs 0.08
 sizeY = size(Y);
 
+
+%%% Init arrays and variables for post-processing stage
 algorithmNum = 2;
 runtime = zeros(algorithmNum,1);
 %% ------------------------------------------------------------------------
@@ -94,6 +120,10 @@ fprintf('Number of parameters of TTSVD %d   error %.3d \n ',noparams,err_ttsvd)
 %% ------------------------------------------------------------------------
 % Post-processing
 %%-------------------------------------------------------------------------
+close all;
+%Blue Green Red
+bands = [1 12 26];          %urban:[1 12 26], Parvia ? 
+RGB = RGB_visu(Y,bands); 
 %%% Display RGB-like images
 figure;
 subplot(1,3,1)
@@ -101,11 +131,11 @@ imshow(RGB); title('Original Image','FontSize',10)
 axis image
 axis off
 subplot(1,3,2)
-imshow(RGB_visu(Yxm_tt)); title('TT model','FontSize',10)
+imshow(RGB_visu(Yxm_tt,bands)); title('TT model','FontSize',10)
 axis image
 axis off
 subplot(1,3,3)
-imshow(RGB_visu(Yxm_ttt)); title('Proposed model','FontSize',10)
+imshow(RGB_visu(Yxm_ttt,bands)); title('Proposed model','FontSize',10)
 axis image
 axis off
 

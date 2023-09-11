@@ -1,9 +1,9 @@
-function RGB = RGB_visu(V)
+function RGB = RGB_visu(V,spec)
 
 %RGB visualization
 %clc;close all;
 [r c w] = size(V);
-rgbImage = cat(3,V(:,:,1),V(:,:,12),V(:,:,26));
+rgbImage = cat(3,V(:,:,spec(1)),V(:,:,spec(2)),V(:,:,spec(3)));
 XYZ = reshape(rgbImage, r*c, 3);
 XYZ = max(XYZ, 0);
 XYZ = XYZ/max(XYZ(:));
