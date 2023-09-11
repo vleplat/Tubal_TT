@@ -11,9 +11,9 @@ addpath(genpath(pwd))
 % Data loading and misc. init.
 %%-------------------------------------------------------------------------
 %%% Urban HSI data set
-load Urban.mat;
-mx = 307;
-my = 307;
+% load Urban.mat;
+% mx = 307;
+% my = 307;
 
 %%% Moffet data set
 % load Moffet.mat;
@@ -21,10 +21,10 @@ my = 307;
 % my = 50;
 
 %%% Uncomment below for previous HSI
-[spec_bands,b] = size(X);
-Y = X;
-clear X;
-Y = reshape(Y',[mx my spec_bands]);
+% [spec_bands,b] = size(X);
+% Y = X;
+% clear X;
+% Y = reshape(Y',[mx my spec_bands]);
 
 %%% Kennedy space center data set
 % load V.mat;
@@ -35,15 +35,17 @@ Y = reshape(Y',[mx my spec_bands]);
 
 
 %%% Pavia HSI data set
-% load PaviaU.mat;
-% Y = paviaU;
-% clear paviaU;
+load PaviaU.mat;
+Y = paviaU;
+clear paviaU;
 
 
-Y = Y(30:30+249,30:30+249,:);        %urban relerror: 0.08 | 0.05 vs 0.08 
+% Y = Y(30:30+249,30:30+249,:);        %urban relerror: 0.08 | 0.062 vs 0.08 
+% Y = Y(30:30+249,30:30+249,1:160);  % urban with lower order folding: 0.038 vs 0.04
+% Y = Y(1:300,1:300,1:160);
 % Y = Y(2:2+44,2:2+44,1:150);        %moffet relerror:     | 0.008 vs 0.02 
 % Y = Y(55:55+249,55:55+249,1:160);  %KSC: 0.05
-%Y = Y(1:600,:,1:100);               %PaviaU: 0.08         | 0.075 vs 0.08
+Y = Y(1:600,:,1:100);               %PaviaU: 0.08         | 0.076 vs 0.08
 sizeY = size(Y);
 
 
@@ -63,6 +65,7 @@ runtime = zeros(algorithmNum,1);
 % Yt = permute(Yt,ordix);
 % szYt2 = [4*ones(1,d) 3];
 szYt2 = factor(prod(sizeY));
+% szYt2 = 10*ones(1,7); %only with second setting of urban
 Yt = reshape(Y,szYt2);
 
 % ftensor2image = @(Yx) reshape(ipermute(reshape(Yx,szYt(ordix)),ordix),szY);
@@ -76,7 +79,7 @@ opts = ttmps_a2cu();
 opts.compression = false;
 
 %min  \|Y - X\|_F  <= noise_level^2 * numel(Y)
-relative_error = 0.08;
+relative_error = 0.076;
 opts.noise_level = relative_error^2*norm(Yt(:))^2;
 start = tic;
 [Yt_dmrg,output_ttt] = tubtt_a2cu(Yt,[],opts); %proposed
