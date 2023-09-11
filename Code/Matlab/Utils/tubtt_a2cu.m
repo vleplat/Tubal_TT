@@ -7,9 +7,16 @@ N = ndims(X);
 szX = size(X);
 Xf = fft(X,[],ndims(X));
 Xf = reshape(Xf,[],szX(end));
+if ~exist('opts.activateRSVD','var')
+    opts.activateRSVD = 0;
+end
 for k = 1:szX(end)
     %Tk = tt_tensor(Xf,[],szYt2,r(1:end));
-    [Xtk,output] = ttmps_a2cu((reshape(Xf(:,k),szX(1:end-1))),rankX,opts);
+    if opts.activateRSVD
+        [Xtk,output] = ttmps_a2cu_rsvd((reshape(Xf(:,k),szX(1:end-1))),rankX,opts);
+    else
+        [Xtk,output] = ttmps_a2cu((reshape(Xf(:,k),szX(1:end-1))),rankX,opts);
+    end
     if k ==1
         Xt = Xtk;
         rtt = Xtk.rank;
