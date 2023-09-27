@@ -11,9 +11,9 @@ addpath(genpath(pwd))
 % Data loading and misc. init.
 %%-------------------------------------------------------------------------
 %%% Urban HSI data set
-load Urban.mat;
-mx = 307;
-my = 307;
+% load Urban.mat;
+% mx = 307;
+% my = 307;
 
 %%% Moffet data set
 % load Moffet.mat;
@@ -21,10 +21,10 @@ my = 307;
 % my = 50;
 
 %%% Uncomment below for previous HSI
-[spec_bands,b] = size(X);
-Y = X;
-clear X;
-Y = reshape(Y',[mx my spec_bands]);
+% [spec_bands,b] = size(X);
+% Y = X;
+% clear X;
+% Y = reshape(Y',[mx my spec_bands]);
 
 %%% Kennedy space center data set
 % load V.mat;
@@ -35,15 +35,14 @@ Y = reshape(Y',[mx my spec_bands]);
 
 
 %%% Pavia HSI data set
-% load PaviaU.mat;
-% Y = paviaU;
-% clear paviaU;
+load PaviaU.mat;
+Y = paviaU;
+clear paviaU;
 
 % urban relerror: 0.08 | 0.062 vs 0.08 
-Y = Y(30:30+249,30:30+249,:);   
+% Y = Y(30:30+249,30:30+249,:);   
 
 % urban with lower order folding: 0.038 vs 0.04
-% Y = Y(30:30+249,30:30+249,1:160);   
 % Y = Y(1:300,1:300,1:160);
 
 % moffet relerror:  0.02   | 0.012 vs 0.02 
@@ -53,7 +52,8 @@ Y = Y(30:30+249,30:30+249,:);
 % Y = Y(55:55+249,55:55+249,1:160);
 
 % PaviaU: 0.08         | 0.076 vs 0.08
-% Y = Y(1:600,:,1:100);              
+Y = Y(1:600,:,1:100);   
+
 sizeY = size(Y);
 
 
