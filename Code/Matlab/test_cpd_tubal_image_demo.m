@@ -1,7 +1,6 @@
 %% 
 % Tubal CPD
 % 
-% AnhHuy Phan
 
 clear all
 clc

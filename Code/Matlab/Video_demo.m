@@ -1,5 +1,4 @@
 %% Tubal TT
-% AnhHuy Phan
 %foreman_qcif
 %akiyo_qcif
 %news_qcif
