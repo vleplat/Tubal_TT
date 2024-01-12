@@ -123,11 +123,11 @@ plot(PS,'LineWidth',4)
 ylabel('SSIM')
 
 
-t=0;
-for i=1:9
-    t=t+numel(Yt_dmrg.U{i});
-end
-numel(Y)/t
+% t=0;
+% for i=1:9
+%     t=t+numel(Yt_dmrg.U{i});
+% end
+% numel(Y)/t
 hold on
 %% TT 
 
@@ -187,20 +187,12 @@ end
 plot(PS_2,'LineWidth',4)
 xlabel('Number of frames')
 legend('Proposed Algorithm', 'Proposed Algorithm','TT-based method','TT-based method')
-t=0;
-for i=1:9
-    t=t+numel(Ytx2.U{i});
-end
-numel(Y)/t
+% t=0;
+% for i=1:9
+%     t=t+numel(Ytx2.U{i});
+% end
+% numel(Y)/t
 
-
-tic
-[Q, B, k] = t_rQB_auto_salman(Y, 0.1, 100,0);
-toc
-E=Y-t_prod(Q,B);
-norm(E(:))/norm(Y(:))
-
-numel(Y)/(144*k*300+k*k*300+k*176*300)
 
 %%
 function Perf_ = eval_rec(Y,Ym)
