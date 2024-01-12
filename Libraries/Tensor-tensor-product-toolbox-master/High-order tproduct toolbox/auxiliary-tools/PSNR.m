@@ -1,13 +1,8 @@
-function psnr = PSNR(Xfull,Xrecover,maxP)
-% 
-% Written by  Wenjin Qin  (qinwenjin2021@163.com)
-%
+function psnr = PSNR(X,G);
 
-Xrecover = max(0,Xrecover);
-Xrecover = min(maxP,Xrecover);
+%X = double(uint8(X));
+%G = double(uint8(G));
 
-Xfull = max(0,Xfull);
-Xfull = min(maxP,Xfull);
+psnr = 10*log10( (255^2)/( mean((X(:)-G(:)).^2) ) );
 
-MSE = (norm(Xfull(:)-Xrecover(:))^2)/ numel(Xrecover);
-psnr = 10*log10(maxP^2/MSE);
+end
