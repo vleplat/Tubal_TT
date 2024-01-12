@@ -31,11 +31,11 @@ Please copy and paste these toolboxes within the /Libraries directory, see Conte
 
  - /Utils : contains helpful files and MatLab routines to run the demos.
 
- - test_tt_tubal_image_demo.m : test file to reproduce results for image compression task, see Example 1 in section 5.
+ - image_demo.m : test file to reproduce results for image compression task, see Example 1 in section 5.
 
- - Video_demo.m : test file to reproduce results for video compression task, see Example 2 in section 5.
+ - demo_video.m : test file to reproduce results for video compression task, see Example 2 in section 5.
 
- - completion_demo.m : test file to reproduce results for tensor completion task, see Example 3 in section 5.
+ - demo_completion.m : test file to reproduce results for tensor completion task, see Example 3 in section 5.
 
  - test_file_HSI.m :  test file for HSI tests, see Example 4 in section 5.
  
