@@ -111,16 +111,16 @@ for i=1:300
     PS=[PS,PSNR(Y(:,:,i),Yxm(:,:,i))];
 end
 %subplot(1,2,1)
-plot(PS,'LineWidth',4)
-ylabel('PSNR')
-hold on
-PS=[];
-yyaxis right
+% plot(PS,'LineWidth',4)
+% ylabel('PSNR')
+% hold on
+ SI=[];
+% yyaxis right
 for i=1:300
-    PS=[PS,ssim(Y(:,:,i),Yxm(:,:,i))];
+    SI=[SI,ssim(Y(:,:,i),Yxm(:,:,i))];
 end
-plot(PS,'LineWidth',4)
-ylabel('SSIM')
+% plot(PS,'LineWidth',4)
+% ylabel('SSIM')
 
 
 % t=0;
@@ -129,7 +129,7 @@ ylabel('SSIM')
 % end
 % numel(Y)/t
 hold on
-%% TT 
+%% TT model
 
 opts = ttmps_a2cu();
 opts.compression = false;
@@ -171,22 +171,32 @@ for i=1:300
     PS_2=[PS_2,PSNR(Y(:,:,i),Yxm_2(:,:,i))];
 end
 % subplot(1,2,2)
-yyaxis left
-plot(PS_2,'LineWidth',4)
+% yyaxis left
+% plot(PS_2,'LineWidth',4)
 % fig = figure(4);
 % clf
 % imagesc(Yxm)
 % axis image
 % axis off
-PS_2=[];
-hold on
-yyaxis right
+SI_2=[];
+% hold on
+% yyaxis right
 for i=1:300
-    PS_2=[PS_2,ssim(Y(:,:,i),Yxm_2(:,:,i))];
+    SI_2=[SI_2,ssim(Y(:,:,i),Yxm_2(:,:,i))];
 end
+plot(PS,'LineWidth',4)
+hold on
 plot(PS_2,'LineWidth',4)
 xlabel('Number of frames')
-legend('Proposed Algorithm', 'Proposed Algorithm','TT-based method','TT-based method')
+ylabel('PSNR')
+legend('Proposed Algorithm', 'TT-based method')
+figure(2)
+plot(SI,'LineWidth',4)
+hold on
+plot(SI_2,'LineWidth',4)
+xlabel('Number of frames')
+ylabel('SSIM')
+legend('Proposed Algorithm','TT-based method')
 % t=0;
 % for i=1:9
 %     t=t+numel(Ytx2.U{i});
