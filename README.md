@@ -15,6 +15,7 @@ This MATLAB software reproduces the results from the following paper:
 In order to run the demos, you will need to add to your MATLAB path:
 - Tensorlab 3.0: https://www.tensorlab.net
 - Tensor-Tensor Product Toolbox 2.0: https://github.com/canyilu/Tensor-tensor-product-toolbox/tree/master
+- The MatLab Image Processing Toolbox 
 
 Additionnally, you will need:
 
