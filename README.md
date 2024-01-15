@@ -1,4 +1,4 @@
-# Software for tubal tensor train (TTT) decomposition:
+# Software for Tubal Tensor Train (TTT) decomposition:
 This repository contains the software for a novel tensor model called the tubal tensor train (TTT) decomposition
 This MATLAB software reproduces the results from the following paper:
 
